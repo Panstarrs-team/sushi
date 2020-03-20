@@ -12,7 +12,18 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
-      }
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: 'sushi.games/opg.png' },
+      { name: 'twitter:description', content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。' },
+      { name: 'twitter:title', content: 'おすしサーバー' },
+      { hid: 'description', name: 'description', content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'おすしサーバー' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'http://sushi.games/' },
+      { hid: 'og:title', property: 'og:title', content: 'おすしサーバー' },
+      { hid: 'og:description', property: 'og:description', content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。' },
+      { hid: 'og:image', property: 'og:image', content: 'sushi.games/opg.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
