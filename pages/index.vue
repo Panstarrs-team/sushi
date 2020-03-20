@@ -26,16 +26,16 @@
       .top__games__columns
         .top__games__column
           img(src="~/assets/images/games/league_of_legends.png" alt="game symbol").top__games__logo
-          video(src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ja-jp/production/ja-jp/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" muted loop autoplay).top__games__video
+          video(src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ja-jp/production/ja-jp/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" playsinline muted loop autoplay).top__games__video
         .top__games__column
           img(src="~/assets/images/games/minecraft.png" alt="game symbol").top__games__logo
-          video(src="~/assets/videos/minecraft.webm" muted loop autoplay).top__games__video
+          video(src="~/assets/videos/minecraft.webm" playsinline muted loop autoplay).top__games__video
         .top__games__column
           img(src="~/assets/images/games/ark.png" alt="game symbol").top__games__logo
-          video(src="~/assets/videos/ark.webm" muted loop autoplay).top__games__video
+          video(src="~/assets/videos/ark.webm" playsinline muted loop autoplay).top__games__video
         .top__games__column
           img(src="~/assets/images/games/factorio.png" alt="game symbol").top__games__logo
-          video(src="~/assets/videos/factorio.webm" muted loop autoplay).top__games__video
+          video(src="~/assets/videos/factorio.webm" playsinline muted loop autoplay).top__games__video
         
 </template>
 
