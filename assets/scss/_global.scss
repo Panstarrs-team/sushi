@@ -5,6 +5,15 @@ html {
   min-height: calc(var(--vh, 1vh) * 100);
 }
 
+::-webkit-scrollbar {
+  background-color: $color-gray;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-space;
+}
+
 * {
   font-family: 'Noto Sans JP', sans-serif;
   box-sizing: border-box;
@@ -23,4 +32,24 @@ html {
 
 .hidden {
   display: none !important;
+}
+
+.pc-only {
+  @media screen and (max-width: $tablet) {
+    display: inherit;
+  }
+
+  @media screen and (min-width: $tablet) {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  @media screen and (max-width: $tablet) {
+    display: none !important;
+  }
+
+  @media screen and (min-width: $tablet) {
+    display: inherit;
+  }
 }

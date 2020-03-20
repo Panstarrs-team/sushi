@@ -2,7 +2,7 @@
   .header
     .inner-margin
       nuxt-link.header__logo(to='/')
-        img(src="~/assets/images/sushi/SU-SHI.svg")
+        img(src="~/assets/images/sushi/logo.svg")
 </template>
 
 <script>

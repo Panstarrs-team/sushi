@@ -22,6 +22,31 @@
             span.top__teams__text__count {{ teamMembers[`${name}チーム`] }}
             span.top__teams__text__online-count {{ onlineCount[`${name}チーム`] }}
 
+    .top__description
+      .top__description__columns
+        .top__description__column.img
+          img.game(src="~/assets/images/sushi/game.svg" alt="game")
+          
+        .top__description__column.desc
+          div
+            h3 いろいろな友達と、いろいろなゲームを。
+            p 新しいゲームをやってみたいけど、気軽に誘える友達がいないかったり、
+            p みんなでやりたいゲームがあるけど、サーバーを建てられる環境じゃなかったり。
+            p おすしサーバーでは、VPSサーバーをニューヨークに構え、
+            p 24時間いつでもみんなでゲームをできる環境を整えています。
+      
+      .top__description__columns
+        .top__description__column.desc
+          div
+            h3 気軽に、やさしく、丁寧に。
+            p 初心者でも楽しめるよう、サーバーの管理者たちは常に気を配っています。
+            p ゲームで熱くなることは誰にでもありますが、暴言や差別発言は許されません。
+            p 楽しむことを大切にしたいおすしサーバーでは、繰り返し行われる迷惑行為に対し
+            p 寛容に接する選択肢はありません。
+
+        .top__description__column.mobile-only.img
+          img.phone(src="~/assets/images/sushi/phone.svg" alt="phone")
+
     .top__games
       .top__games__columns
         .top__games__column
@@ -77,11 +102,6 @@ export default {
       })
       return result
     }
-  },
-  mounted() {
-    Object.keys(this.teamInfo).forEach((member) => {
-      console.log(this.teamInfo[member])
-    })
   }
 }
 </script>
@@ -292,6 +312,100 @@ export default {
     }
   }
 
+  &__description {
+    position: relative;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    // margin: 200px 0 0 0;
+    padding: 100px 0;
+    background-color: $color-space;
+
+    // &::before {
+    //   position: absolute;
+    //   top: -100px;
+    //   content: '';
+    //   width: 0;
+    //   height: 0;
+    //   border-style: solid;
+    //   border-width: 100px 0 0 calc(100vw - 5px);
+    //   border-color: transparent transparent transparent $color-space;
+    // }
+
+    // &::after {
+    //   position: absolute;
+    //   top: 100%;
+    //   content: '';
+    //   width: 0;
+    //   height: 0;
+    //   border-style: solid;
+    //   border-width: 0 calc(100vw - 5px) 100px 0;
+    //   border-color: transparent $color-space transparent transparent;
+    // }
+
+    &__columns {
+      max-width: $pc;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 20px;
+
+      @media screen and (max-width: $tablet) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    &__column {
+      min-height: 50vh;
+      min-height: calc(var(--vh, 1vh) * 50);
+      color: $color-white;
+
+      &.desc {
+        display: flex;
+        align-items: center;
+        text-align: left;
+
+        h3 {
+          display: block;
+          font-size: 16px;
+          letter-spacing: 1px;
+          font-weight: 600;
+        }
+
+        p {
+          letter-spacing: 1px;
+          font-size: 11px;
+          line-height: 18px;
+
+          &:first-of-type {
+            margin-top: 30px;
+          }
+        }
+      }
+
+      &.img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          max-width: 280px;
+          max-height: 240px;
+          width: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0px 0px 8px $color-white);
+
+          &.game {
+            animation: float 3s -1s ease-in-out infinite alternate;
+          }
+
+          &.phone {
+            animation: float 3s ease-in-out infinite alternate;
+          }
+        }
+      }
+    }
+  }
+
   &__games {
     &__columns {
       display: grid;
@@ -343,6 +457,18 @@ export default {
       object-fit: cover;
       z-index: 1;
     }
+  }
+}
+
+@keyframes float {
+  from {
+    display: block;
+    transform: translateY(-10px);
+  }
+
+  to {
+    display: block;
+    transform: translateY(10px);
   }
 }
 </style>
