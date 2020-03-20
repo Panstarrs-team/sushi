@@ -10,15 +10,34 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:image', content: 'http://sushi.games/ogp.png' },
-      { name: 'twitter:description', content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。' },
+      {
+        name: 'twitter:description',
+        content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。'
+      },
       { name: 'twitter:title', content: 'おすしサーバー' },
-      { hid: 'description', name: 'description', content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。' },
-      { hid: 'og:site_name', property: 'og:site_name', content: 'おすしサーバー' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。'
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'おすしサーバー'
+      },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:url', property: 'og:url', content: 'http://sushi.games/' },
       { hid: 'og:title', property: 'og:title', content: 'おすしサーバー' },
-      { hid: 'og:description', property: 'og:description', content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。' },
-      { hid: 'og:image', property: 'og:image', content: 'http://sushi.games/ogp.png' }
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'おすしサーバー - みんなでゲームを楽しむためのサーバーです。'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'http://sushi.games/ogp.png'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -40,7 +59,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~plugins/ga.js', mode: 'client' }],
   serverMiddleware: ['~/api/index'],
   /*
    ** Nuxt.js dev-modules
@@ -78,6 +97,6 @@ module.exports = {
     extend(config, ctx) {}
   },
   env: {
-    botToken: process.env.BOT_TOKEN
+    GA_TOKEN: process.env.GA_TOKEN
   }
 }

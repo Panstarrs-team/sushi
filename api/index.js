@@ -21,11 +21,11 @@ client.on('guildMemberAdd', (member) => {
   const sushiList = new Discord.MessageEmbed()
     .setTitle('おすしサーバーへようこそ！')
     .setDescription(
-      'あなたがbotではないことの確認のために、すきな軍艦をえらんでください！'
+      'あなたがbotではないことの確認のために、すきな軍艦の名前を選んで送信してください！'
     )
 
   Object.keys(sushiData).forEach((key) => {
-    sushiList.addField(key.toString(), sushiData[key].desc, true)
+    sushiList.addField(sushiData[key].desc, key.toString(), false)
   })
 
   member.send(sushiList)
