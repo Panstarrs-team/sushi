@@ -1,3 +1,4 @@
+const axios = require('axios')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
@@ -8,6 +9,20 @@ require('dotenv').config()
 const sushiData = require('../lib/sushiTeams.json')
 let sushiServer
 let sushiTeams
+let leagueOfLegendsChampions
+let leagueOfLegendsChampionImages
+
+axios
+  .get('https://ddragon.leagueoflegends.com/realms/jp.json')
+  .then((version) => {
+    axios
+      .get(
+        `http://ddragon.leagueoflegends.com/cdn/${version.data.v}/data/ja_JP/champion.json`
+      )
+      .then((champions) => {
+        leagueOfLegendsChampions = champions.data.data
+      })
+  })
 
 client.on('ready', () => {
   console.log(`${client.user.tag} is ready.`)
@@ -74,9 +89,15 @@ app.get('/teams', function(req, res) {
     const onlineCount = 0
     result[role.name] = role.members
 
-    onlineCounts[role.name] = role.members.filter((member) => member.presence.status === 'online')
+    onlineCounts[role.name] = role.members.filter(
+      (member) => member.presence.status === 'online'
+    )
   })
-  res.send({teamData: result, onlineStatus: onlineCounts})
+  res.send({ teamData: result, onlineStatus: onlineCounts })
+})
+
+app.get('/champions', function(req, res) {
+  res.send(leagueOfLegendsChampions)
 })
 
 module.exports = {

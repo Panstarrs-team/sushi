@@ -59,6 +59,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
     min-height: calc(var(--vh, 1vh) * 100);
     transform: translateX(calc(100% - 100px));
     animation: slide 2.5s 1s linear forwards;

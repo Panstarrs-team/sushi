@@ -18,5 +18,9 @@ export default {}
   height: 80px;
   width: 100%;
   background-color: transparent;
+
+  img {
+    vertical-align: top;
+  }
 }
 </style>
