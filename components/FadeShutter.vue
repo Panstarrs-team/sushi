@@ -26,7 +26,7 @@ export default {
       setTimeout(() => {
         shutter.classList.add('hidden')
       }, 800)
-    }, this.timeout)
+    }, this.timeout + 500)
   }
 }
 </script>
