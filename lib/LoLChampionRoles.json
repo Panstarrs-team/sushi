@@ -4,6 +4,11 @@
     "nameEN": "Tank",
     "nameJP": "タンク"
   },
+  "support": {
+    "id": "Support",
+    "nameEN": "Support",
+    "nameJP": "サポート"
+  },
   "asassin": {
     "id": "Assassin",
     "nameEN": "Assassin",

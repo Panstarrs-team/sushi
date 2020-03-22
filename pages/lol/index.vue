@@ -1,6 +1,6 @@
 <template lang="pug">
   .lol
-    SearchInput(v-on:updateFilter="filterRole($event)")
+    SearchInput(v-on:updateFilter="updateFIlter($event)")
     .lol__champion-list
       ChampionCard(v-for="(champion, key) in championArray" :key="key" :champion="champion.data" :filter="filter")
 </template>
@@ -24,7 +24,8 @@ export default {
   data() {
     return {
       filter: {
-        roles: []
+        roles: [],
+        keyword: ''
       }
     }
   },
@@ -42,14 +43,19 @@ export default {
     }
   },
   methods: {
-    filterRole(role) {
-      this.filter.roles = role
+    updateFIlter(filter) {
+      this.filter.roles = filter.roles
+      this.filter.keyword = filter.keywords
     }
   }
 }
 </script>
 
 <style lang="scss">
+body {
+  overflow-y: scroll;
+}
+
 .lol {
   padding: 120px 0 40px 0;
 

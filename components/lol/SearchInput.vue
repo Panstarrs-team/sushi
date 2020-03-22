@@ -12,6 +12,8 @@
         label(:for="role.id") {{ role.nameJP }}
 
     .search__bar-keyword(:class="searchBarStatus.isKeywordOpen ? 'active' : ''")
+      input.search__bar-keyword__input(placeholder="Xerath" spellcheck="false" @input="updateFilter()" v-model="filledKeyword")
+
 </template>
 
 <script>
@@ -25,6 +27,7 @@ export default {
         isKeywordOpen: false
       },
       selectedRoles: [],
+      filledKeyword: '',
       championRoles: ChampionRoleJSON
     }
   },
@@ -39,8 +42,9 @@ export default {
       this.searchBarStatus.isKeywordOpen = !this.searchBarStatus.isKeywordOpen
     },
     updateFilter() {
-      this.$nextTick(() => {
-        this.$emit('updateFilter', this.selectedRoles)
+      this.$emit('updateFilter', {
+        roles: this.selectedRoles,
+        keywords: this.filledKeyword
       })
     }
   }
@@ -163,6 +167,20 @@ export default {
     @extend .search__bar-tag;
     right: unset;
     left: 100%;
+
+    &__input {
+      height: 30px;
+      min-width: 240px;
+      padding: 0 5px;
+      outline: none;
+      border: none;
+      border-radius: $small-radius-size;
+      font-size: 12px;
+
+      @media screen and (max-width: $tablet) {
+        width: calc(100% - 120px);
+      }
+    }
 
     &.active {
       left: 0%;

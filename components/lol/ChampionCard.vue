@@ -1,5 +1,5 @@
 <template lang="pug">
-  nuxt-link(:to="{name: 'lol-champion', params: {champion: champion.id}}" :data-role="parsedRoles" v-if="filteredResult")
+  nuxt-link(:to="{name: 'lol-champion', params: {champion: champion.id}}" :data-role="parsedRoles" v-if="roleFilteredResult && keywordFilteredResult")
     .card
       img.card__image(:src="urlizedThumbnail")
       div.card__text
@@ -26,7 +26,7 @@ export default {
     parsedRoles() {
       return this.champion.tags.join(' ')
     },
-    filteredResult() {
+    roleFilteredResult() {
       const result = this.filter.roles.every((role) => {
         this.champion.tags.join(' ').match(role)
 
@@ -36,6 +36,21 @@ export default {
       })
 
       return result
+    },
+    keywordFilteredResult() {
+      if (this.filter.keyword.length > 0) {
+        const nameList = [this.champion.id, this.champion.name]
+        const regexp = new RegExp(this.filter.keyword, 'i')
+        const keyword = nameList.some((name) => {
+          if (name.match(regexp)) {
+            return true
+          }
+        })
+
+        return keyword
+      } else {
+        return true
+      }
     }
   }
 }
