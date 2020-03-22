@@ -1,0 +1,27 @@
+{
+  "tank": {
+    "id": "Tank",
+    "nameEN": "Tank",
+    "nameJP": "タンク"
+  },
+  "asassin": {
+    "id": "Assassin",
+    "nameEN": "Assassin",
+    "nameJP": "アサシン"
+  },
+  "fighter": {
+    "id": "Fighter",
+    "nameEN": "Fighter",
+    "nameJP": "ファイター"
+  },
+  "mage": {
+    "id": "Mage",
+    "nameEN": "Mage",
+    "nameJP": "メイジ"
+  },
+  "marksman": {
+    "id": "Marksman",
+    "nameEN": "Marksman",
+    "nameJP": "マークスマン"
+  }
+}

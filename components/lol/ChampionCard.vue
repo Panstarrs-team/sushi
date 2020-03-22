@@ -1,35 +1,41 @@
 <template lang="pug">
-  nuxt-link(:to="{name: 'lol-champion', params: {champion: link}}")
+  nuxt-link(:to="{name: 'lol-champion', params: {champion: champion.id}}" :data-role="parsedRoles" v-if="filteredResult")
     .card
       img.card__image(:src="urlizedThumbnail")
       div.card__text
-        span.card__text__title-en {{ nameEN }}
-        span.card__text__title-jp {{ nameJP }}
+        span.card__text__title-en {{ champion.id }}
+        span.card__text__title-jp {{ champion.name }}
 </template>
 
 <script>
 export default {
   props: {
-    id: {
+    champion: {
       required: true,
-      type: String
+      type: Object
     },
-    nameEN: {
-      required: true,
-      type: String
-    },
-    nameJP: {
-      required: true,
-      type: String
-    },
-    link: {
-      required: true,
-      type: String
+    filter: {
+      default: () => {},
+      type: Object
     }
   },
   computed: {
     urlizedThumbnail() {
-      return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${this.id}_0.jpg`
+      return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${this.champion.id}_0.jpg`
+    },
+    parsedRoles() {
+      return this.champion.tags.join(' ')
+    },
+    filteredResult() {
+      const result = this.filter.roles.every((role) => {
+        this.champion.tags.join(' ').match(role)
+
+        if (this.champion.tags.join(' ').match(role)) {
+          return true
+        }
+      })
+
+      return result
     }
   }
 }
@@ -40,8 +46,8 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
-  filter: drop-shadow(0px 0px 8px $color-gray);
+  border-radius: $medium-radius-size;
+  filter: drop-shadow(3px 3px 10px $color-gray);
 
   &::before {
     content: '';

@@ -29,6 +29,7 @@ export default {
 <style lang="scss" scoped>
 .champion {
   &__hero {
+    position: relative;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 
@@ -45,6 +46,18 @@ export default {
       width: 100%;
       left: 50%;
       transform: translateX(-50%);
+
+      @media screen and (min-width: $pc) {
+        bottom: unset;
+        left: unset;
+        top: 0;
+        right: 0;
+        padding: 0 40px;
+        width: 100vh;
+        width: calc(var(--vh, 1vh) * 100);
+        transform-origin: right top;
+        transform: rotateZ(-90deg) translateX(0px) translateY(-100%);
+      }
 
       .inner-margin {
         padding: 40px 0;
