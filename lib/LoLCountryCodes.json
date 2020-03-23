@@ -1,0 +1,106 @@
+{
+  "cs_CZ": {
+    "code": "cs_CZ",
+    "name": "Czech"
+  },
+  "el_GR": {
+    "code": "el_GR",
+    "name": "Greek"
+  },
+  "pl_PL": {
+    "code": "pl_PL",
+    "name": "Polish"
+  },
+  "ro_RO": {
+    "code": "ro_RO",
+    "name": "Romanian"
+  },
+  "hu_HU": {
+    "code": "hu_HU",
+    "name": "Hungarian"
+  },
+  "en_GB": {
+    "code": "en_GB",
+    "name": "English (United Kingdom)"
+  },
+  "de_DE": {
+    "code": "de_DE",
+    "name": "German"
+  },
+  "es_ES": {
+    "code": "es_ES",
+    "name": "Spanish (Spain)"
+  },
+  "it_IT": {
+    "code": "it_IT",
+    "name": "Italian"
+  },
+  "fr_FR": {
+    "code": "fr_FR",
+    "name": "French"
+  },
+  "ja_JP": {
+    "code": "ja_JP",
+    "name": "Japanese"
+  },
+  "ko_KR": {
+    "code": "ko_KR",
+    "name": "Korean"
+  },
+  "es_MX": {
+    "code": "es_MX",
+    "name": "Spanish (Mexico)"
+  },
+  "es_AR": {
+    "code": "es_AR",
+    "name": "Spanish (Argentina)"
+  },
+  "pt_BR": {
+    "code": "pt_BR",
+    "name": "Portuguese"
+  },
+  "en_US": {
+    "code": "en_US",
+    "name": "English (United States)"
+  },
+  "en_AU": {
+    "code": "en_AU",
+    "name": "English (Australia)"
+  },
+  "ru_RU": {
+    "code": "ru_RU",
+    "name": "Russian"
+  },
+  "tr_TR": {
+    "code": "tr_TR",
+    "name": "Turkish"
+  },
+  "en_PH": {
+    "code": "en_PH",
+    "name": "English (Republic of the Philippines)"
+  },
+  "en_SG": {
+    "code": "en_SG",
+    "name": "English (Singapore)"
+  },
+  "th_TH": {
+    "code": "th_TH",
+    "name": "Thai"
+  },
+  "vn_VN": {
+    "code": "vn_VN",
+    "name": "Vietnamese"
+  },
+  "zh_MY": {
+    "code": "zh_MY",
+    "name": "Chinese (Malaysia)"
+  },
+  "zh_CN": {
+    "code": "zh_CN",
+    "name": "Chinese (China)"
+  },
+  "zh_TW": {
+    "code": "zh_TW",
+    "name": "Chinese (Taiwan)"
+  }
+}
