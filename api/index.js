@@ -78,6 +78,8 @@ client.on('message', (message) => {
   }
 })
 
+client.on('error', console.error)
+
 client.login(process.env.BOT_TOKEN)
 
 app.use(bodyParser.urlencoded({ extended: false }))
