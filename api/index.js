@@ -10,7 +10,6 @@ const sushiData = require('../lib/sushiTeams.json')
 let sushiServer
 let sushiTeams
 let leagueOfLegendsChampions
-let leagueOfLegendsChampionImages
 
 axios
   .get('https://ddragon.leagueoflegends.com/realms/jp.json')
@@ -43,37 +42,65 @@ client.on('guildMemberAdd', (member) => {
     sushiList.addField(sushiData[key].desc, key.toString(), false)
   })
 
-  member.send(sushiList)
+  member.send(sushiList).catch((err) => console.error)
 })
 
 client.on('message', (message) => {
   if (message.guild === null) {
-    if (message.content in sushiData) {
-      const trustedUser = sushiServer.members.cache.find(
-        (member) => member.id === message.author.id
-      )
+    const trustedUser = sushiServer.members.cache.find(
+      (member) => member.id === message.author.id
+    )
 
+    const currentRoleStatus = trustedUser.roles.cache.find(
+      (role) => role.name.slice(0, -3) in sushiData
+    )
+
+    const isRoleAlreadySet = currentRoleStatus ? true : false
+
+    if (message.content in sushiData) {
       const selectedRole = sushiServer.roles.cache.find(
         (role) => role.name === `${message.content}チーム`
       )
 
-      const currentRoleStatus = trustedUser.roles.cache.find(
-        (role) => role.name.slice(0, -3) in sushiData
-      )
-
-      const isRoleAlreadySet = currentRoleStatus ? true : false
-
       if (!isRoleAlreadySet) {
-        message.author.send(
-          `${message.content}がお好きなんですね！\nフレンドと一緒に${message.content}愛を深めましょう！`
-        )
+        message.author
+          .send(
+            `${message.content}がお好きなんですね！\nフレンドと一緒に${message.content}愛を深めましょう！`
+          )
+          .catch((err) => console.error)
 
         trustedUser.roles.add(selectedRole)
       } else {
-        message.author.send(
-          `あなたはすでに${currentRoleStatus.name}に所属しています！\nチームの変更はBOSSロールがついたリーダーに直接声をかけてくださいね！`
-        )
+        message.author
+          .send(
+            `あなたはすでに${currentRoleStatus.name}に所属しています！\nチームの変更をご希望の場合 **チーム変更** と送ってみてください！`
+          )
+          .catch((err) => console.error)
       }
+    } else if (message.content === 'チーム変更' && !isRoleAlreadySet) {
+      message.author
+        .send(
+          'チームの変更をご希望の場合はBOSSロールがついたユーザーに直接お声掛けください！'
+        )
+        .catch((err) => console.error)
+
+      // message.author
+      //   .send(
+      //     'チームの変更をご希望ですか？\n **チーム変更** と送ってみてください！'
+      //   )
+      //   .catch((err) => console.error)
+    } else if (isRoleAlreadySet) {
+      message.author
+        .send(
+          'チームの変更をご希望の場合はBOSSロールがついたユーザーに直接お声掛けください！'
+        )
+        .catch((err) => console.error)
+
+      // message.author
+      //   .send(
+      //     'チームの変更をご希望ですか？\n **チーム変更** と送ってみてください！'
+      //   )
+      //   .catch((err) => console.error)
     }
   }
 })
@@ -88,7 +115,6 @@ app.get('/teams', function(req, res) {
   const result = {}
   const onlineCounts = {}
   sushiTeams.forEach((role) => {
-    const onlineCount = 0
     result[role.name] = role.members
 
     onlineCounts[role.name] = role.members.filter(
